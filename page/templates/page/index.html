@@ -5,6 +5,21 @@
     My Two Cents
 {% endblock title %}
 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'page/index.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h2>Hello World!</h2>
+    <section id="welcome">
+        <p>Hi, I am Igor Kuivjogi Fernandes.</p>   
+        <p>In my free time I like to navigatwe through open source projects. I play bass.</p>
+    </section>
+
+    <section id="latest-posts">
+        Latest posts...
+    </section>
+
+    <section id="about">
+        About...
+    </section>
 {% endblock content %}

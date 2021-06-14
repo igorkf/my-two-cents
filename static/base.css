@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -11,7 +10,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    /* padding: 0 10%; */
     position: absolute;
     top: 0;
     left: 0;
@@ -19,11 +18,10 @@ body {
 }
 
 #main-navigation li {
-    width: 100%;
     padding: 0rem;
     margin: 5rem;
     list-style-type: none;
-    display: inline-block
+    display: inline-block;
 }
 
 #main-navigation a {
@@ -34,5 +32,17 @@ body {
 
 #main-navigation a:hover,
 #main-navigation a:active {
-  color: rgb(12, 127, 140);
+    color: rgb(12, 127, 140);
+}
+
+#about {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(181, 213, 203);
+    height: 3rem;
+    bottom: 0;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    left: 0;
 }
