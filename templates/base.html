@@ -7,17 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'base.css' %}">
-    {% block css_files %}{% endblock css_files %}
+    {% comment %} <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'normalize.css' %}"> {% endcomment %}
+    {% block css_files %}
+        {% comment %} <link rel="stylesheet" href="{% static 'page/index.css' %}"> {% endcomment %}
+    {% endblock %}
 
 </head>
 <body>
     <header id="main-navigation">
         <nav>
             <ul>
-                <a href="{% url 'who-am-i' %}"><li>Who Am I?</li></a>
-                <a href="{% url 'posts' %}"><li>Posts</li></a>
-                <a href="{% url 'projects' %}"><li>Projects</li></a>
+                <li><a href="{% url 'index' %}">igorkf</a></li>
+                <li><a href="{% url 'who-am-i' %}">Who Am I?</a></li>
+                <li><a href="{% url 'posts' %}">Posts</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
             </ul>
         </nav>
     </header>
