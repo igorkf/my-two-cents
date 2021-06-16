@@ -49,7 +49,9 @@ class PostsViewTest(TestCase):
         view = views.PostsView()
         view.setup(request)
 
+        view.object_list = view.get_queryset()
         context = view.get_context_data()
+
         self.assertIn('posts', context)
 
 
