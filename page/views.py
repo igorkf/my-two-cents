@@ -2,11 +2,10 @@ from datetime import date
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
+from django.views.generic import TemplateView
 
 # Create your views here.
-
-
-# TODO: change to class-based views
 
 
 fake_posts = [
@@ -43,18 +42,24 @@ fake_posts = [
 ]
 
 
-def index(request):
-    return render(request, 'page/index.html')
+class IndexView(TemplateView):
+    template_name = 'page/index.html'
 
 
-def who_am_i(request):
-    return HttpResponse('Who am I?')
+class WhoAmIView(View):
+    def get(self, request):
+        return HttpResponse('Who am I?')
 
 
-def posts(request):
-    context = {'posts': fake_posts}
-    return render(request, 'page/posts.html', context)
+class PostsView(TemplateView):
+    template_name = 'page/posts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = fake_posts
+        return context
 
 
-def projects(requests):
-    return HttpResponse('Projects')
+class ProjectsView(View):
+    def get(self, request):
+        return HttpResponse('Projects')
