@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block css_files %}
-    <link rel="stylesheet" href="{% static 'page/index.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'page/index.css' %}"> {% endcomment %}
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
         <h2>Latest posts</h2>
     </section>
 
-    <section id="about">
-        About...
-    </section>
+    <footer id="about">
+        Footer
+    </footer>
 {% endblock content %}
