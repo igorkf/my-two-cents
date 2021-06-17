@@ -9,7 +9,7 @@
         {% for project in projects %}
             <div>
                 <div><img src="" alt="..."></div>
-                {% for tag in project.tags.all %}<span> {{tag}} </span>{% endfor %}
+                {% for tech in project.techs.all %}<span> {{tech}} </span>{% endfor %}
                 <h3>{{project.title}}</h3>
                 <p>{{project.content|truncatewords:30}}</p>
                 <div>{{project.date|date:'M d, Y'}}</div>

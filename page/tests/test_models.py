@@ -2,7 +2,7 @@ from datetime import date
 
 from django.test import TestCase
 
-from ..models import Post, Author, Tag, Project, Job
+from ..models import Post, Author, Tag, Tech, Project, Job
 
 
 class PostModelTest(TestCase):
@@ -49,15 +49,25 @@ class TagModelTest(TestCase):
         self.assertEqual(str(self.tag), name)
 
 
+class TechModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.tech = Tech.objects.create(name='Python')
+
+    def test_if_string_representation_is_the_tech_name(self):
+        name = self.tech.name
+        self.assertEqual(str(self.tech), name)
+
+
 class ProjectModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.tag_1 = Tag.objects.create(name='python')
-        cls.tag_2 = Tag.objects.create(name='django')
+        cls.tech_1 = Tech.objects.create(name='Python')
+        cls.tech_2 = Tech.objects.create(name='Django')
 
         cls.project = Project.objects.create(
             title='Django blog', content='This was made...', date=date(2021, 7, 16))
-        cls.project.tags.set([cls.tag_1, cls.tag_2])
+        cls.project.techs.set([cls.tech_1, cls.tech_2])
 
     def test_if_string_representation_is_the_title(self):
         title = self.project.title
@@ -67,8 +77,16 @@ class ProjectModelTest(TestCase):
 class JobModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
+        cls.tech_1 = Tech.objects.create(name='Python')
+        cls.tech_2 = Tech.objects.create(name='Flask')
+        cls.tech_3 = Tech.objects.create(name='SQL')
+
         cls.job = Job.objects.create(position='Python Developer', company='ABC', date=date(
-            2021, 6, 16), techs='python postgresql')
+            2021, 6, 16))
+        cls.job.techs.set([cls.tech_1, cls.tech_2, cls.tech_3])
+
+    def test_if_job_has_many_techs(self):
+        self.assertEqual(self.job.techs.count(), 3)
 
     def test_if_string_representation_is_the_position_with_the_company(self):
         position = self.job.position
