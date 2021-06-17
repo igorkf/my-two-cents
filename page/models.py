@@ -29,11 +29,18 @@ class Post(models.Model):
         return self.title
 
 
+class Tech(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
 class Project(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     date = models.DateField()
-    tags = models.ManyToManyField(Tag, related_name='project_tags')
+    techs = models.ManyToManyField(Tech, related_name='project_techs')
 
     def __str__(self):
         return self.title
@@ -44,7 +51,7 @@ class Job(models.Model):
     company = models.CharField(max_length=50)
     date = models.DateField()
     description = models.CharField(max_length=200)
-    techs = models.CharField(max_length=30)  # TODO: implement Tech model
+    techs = models.ManyToManyField(Tech, related_name='job_techs')
 
     def __str__(self):
         return f'{self.position} ({self.company})'
