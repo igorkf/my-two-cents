@@ -2,7 +2,7 @@ from datetime import date
 
 from django.test import TestCase
 
-from ..models import Post, Author, Tag
+from ..models import Post, Author, Tag, Project, Job
 
 
 class PostModelTest(TestCase):
@@ -47,3 +47,30 @@ class TagModelTest(TestCase):
     def test_if_string_representation_is_the_tag_name(self):
         name = self.tag.name
         self.assertEqual(str(self.tag), name)
+
+
+class ProjectModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.tag_1 = Tag.objects.create(name='python')
+        cls.tag_2 = Tag.objects.create(name='django')
+
+        cls.project = Project.objects.create(
+            title='Django blog', content='This was made...', date=date(2021, 7, 16))
+        cls.project.tags.set([cls.tag_1, cls.tag_2])
+
+    def test_if_string_representation_is_the_title(self):
+        title = self.project.title
+        self.assertEqual(str(self.project), title)
+
+
+class JobModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.job = Job.objects.create(position='Python Developer', company='ABC', date=date(
+            2021, 6, 16), techs='python postgresql')
+
+    def test_if_string_representation_is_the_position_with_the_company(self):
+        position = self.job.position
+        company = self.job.company
+        self.assertEqual(str(self.job), f'{position} ({company})')

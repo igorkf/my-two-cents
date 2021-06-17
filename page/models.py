@@ -23,7 +23,28 @@ class Post(models.Model):
     author = models.ForeignKey(
         Author, on_delete=models.CASCADE, related_name='author')
     date = models.DateField()
-    tags = models.ManyToManyField(Tag, related_name='tags')
+    tags = models.ManyToManyField(Tag, related_name='post_tags')
 
     def __str__(self):
         return self.title
+
+
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    date = models.DateField()
+    tags = models.ManyToManyField(Tag, related_name='project_tags')
+
+    def __str__(self):
+        return self.title
+
+
+class Job(models.Model):
+    position = models.CharField(max_length=30)
+    company = models.CharField(max_length=50)
+    date = models.DateField()
+    description = models.CharField(max_length=200)
+    techs = models.CharField(max_length=30)  # TODO: implement Tech model
+
+    def __str__(self):
+        return f'{self.position} ({self.company})'
