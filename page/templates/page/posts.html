@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load markdown_extras %}
 
 {% block title %}
     Posts
@@ -11,7 +12,7 @@
                 <div><img src="" alt="..."></div>
                 {% for tag in post.tags.all %}<span> {{tag}} </span>{% endfor %}
                 <h3>{{post.title}}</h3>
-                <p>{{post.content|truncatewords:30}}</p>
+                <p>{{post.content|markdown|safe}}</p>
                 <div>{{post.author}} - {{post.date|date:'M d, Y'}}</div>
             </div>
         {% endfor %}
