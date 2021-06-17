@@ -50,7 +50,7 @@ class Job(models.Model):
     position = models.CharField(max_length=30)
     company = models.CharField(max_length=50)
     date = models.DateField()
-    description = models.CharField(max_length=200)
+    description = models.TextField()
     techs = models.ManyToManyField(Tech, related_name='job_techs')
 
     def __str__(self):

@@ -9,4 +9,5 @@ db.sqlite3
 htmlcov
 /page/post_drafts
 /page/static/page/*.jpeg
+/staticfiles
 
