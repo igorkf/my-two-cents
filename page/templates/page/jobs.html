@@ -11,25 +11,18 @@
     </section>
 
     <section id="timeline">
-        <article>
-            <div class="inner">
-                <span class="date">
-                    <span class="month">Jan</span>
-                    <span class="year">2014</span>
-                </span>
-                <h2>The Title</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
-            </div>
-        </article>
-        <article>
-            <div class="inner">
-                <span class="date">
-                    <span class="month">Jan</span>
-                    <span class="year">2014</span>
-                </span>
-                <h2>The Title</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
-            </div>
-        </article>
+        {% for job in jobs %}
+            <article>
+                <div class="inner">
+                    <span class="date">
+                        <span class="month">{{job.date|date:'M'}}</span>
+                        <span class="year">{{job.date|date:'Y'}}</span>
+                    </span>
+                    <h2>{{job.company}}</h2>
+                    <h3>{{job.position}}</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
+                </div>
+            </article>
+        {% endfor %}
     </section>   
 {% endblock content %}
