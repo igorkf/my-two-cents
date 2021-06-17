@@ -37,3 +37,14 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Job(models.Model):
+    position = models.CharField(max_length=30)
+    company = models.CharField(max_length=50)
+    date = models.DateField()
+    description = models.CharField(max_length=200)
+    techs = models.CharField(max_length=30)  # TODO: implement Tech model
+
+    def __str__(self):
+        return f'{self.position} ({self.company})'

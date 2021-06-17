@@ -14,9 +14,10 @@ class IndexView(TemplateView):
     template_name = 'page/index.html'
 
 
-class WhoAmIView(View):
-    def get(self, request):
-        return HttpResponse('Who am I?')
+class JobsView(ListView):
+    model = models.Job
+    template_name = 'page/jobs.html'
+    context_object_name = 'jobs'
 
 
 class PostsView(ListView):
