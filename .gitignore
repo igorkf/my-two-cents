@@ -7,7 +7,7 @@ db.sqlite3
 /htmlcov
 .DS_Store
 htmlcov
-/page/post_drafts
-/page/static/page/*.jpeg
 /staticfiles
+/page/post_drafts
+/page/static/page/images/
 

@@ -16,7 +16,7 @@ class IndexView(TemplateView):
 
 class JobsView(ListView):
     model = models.Job
-    template_name = 'page/jobs.html'
+    template_name = 'page/who-am-i.html'
     context_object_name = 'jobs'
 
 
